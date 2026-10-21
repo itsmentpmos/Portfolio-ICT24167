@@ -1,0 +1,28 @@
+# wrangler.toml
+# Cloudflare Pages / Workers configuration for SPU ICT Web Portfolio
+
+name = "natthapon-min"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "."
+
+# Cloudflare D1 Database Binding
+# Create via: npx wrangler d1 create spu-portfolio-db
+[[d1_databases]]
+binding = "DB"
+database_name = "spu-portfolio-db"
+database_id = "606a87de-54ff-42eb-862d-5910dbe21f6c"
+
+# Cloudflare R2 Object Storage Bucket Binding (for Images & Certificate PDFs)
+# Create via: npx wrangler r2 bucket create spu-portfolio-assets
+[[r2_buckets]]
+binding = "PORTFOLIO_BUCKET"
+bucket_name = "spu-portfolio-assets"
+preview_bucket_name = "spu-portfolio-assets-preview"
+
+# Environment Variables
+[vars]
+ENVIRONMENT = "production"
+COLLEGE = "Sripatum University"
+FACULTY = "Faculty of Information Technology"
+MAJOR = "Information and Communication Technology (ICT)"
